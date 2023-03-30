@@ -1,0 +1,19 @@
+{
+    "name": "kingsoft/csp-builder",
+    "description": "Conten Security Policy builder for PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Csp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "theking2",
+            "email": "theking2@king.ma"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
