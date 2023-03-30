@@ -1,0 +1,19 @@
+{
+    "name": "theking2/csp-builder",
+    "description": "Create a CSP header based on the configuration",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Theking2\\CspBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "theking2",
+            "email": "theking2@king.ma"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
