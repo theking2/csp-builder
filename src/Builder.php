@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
-namespace Csp;
+
+namespace Theking2\CspBuilder;
+
 /**
  * CspBuilder
  * Build a Content Security Policy (CSP) header
