@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Theking2\\CspBuilder\\": "src/"
+            "Theking2\\Csp\\": "src/"
         }
     },
     "authors": [
