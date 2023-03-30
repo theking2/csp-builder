@@ -3,12 +3,12 @@
 namespace Kingsoft\Csp;
 
 /**
- * CspBuilder
+ * Builder
  * Build a Content Security Policy (CSP) header
  * Example:
- * $Csp = new CspBuilder();
- * $Csp->addCspPolicies('default-src', [CspBuilder::SELF]);
- *  ->addCspPolicy('script-src', CspBuilder::SELF);
+ * $Csp = new Builder();
+ * $Csp->addCspPolicies('default-src', [Builder::SELF]);
+ *  ->addCspPolicy('script-src', Builder::SELF);
  *  ->addCspPolicyNonce('script-src');
  */
 class Builder
@@ -35,9 +35,9 @@ class Builder
    *
    * @param  Source $source
    * @param  array $directivess Array of string directives
-   * @return CspBuilder for chaining
+   * @return Builder for chaining
    */
-  public function addCspPolicies(Source $source, array $directives): CspBuilder
+  public function addCspPolicies(Source $source, array $directives): Builder
   {
     $this->csp_options[ $source-> value ] = $directives;
     return $this;
@@ -47,9 +47,9 @@ class Builder
    *
    * @param  Source $source
    * @param  Directive $directive
-   * @return CspBuilder for chainning
+   * @return Builder for chainning
    */
-  public function addCspPolicy(Source $source, Directive $directive): CspBuilder
+  public function addCspPolicy(Source $source, Directive $directive): Builder
   {
     $this->csp_options[ $source-> value ][] = $directive-> value;
     return $this;
@@ -59,9 +59,9 @@ class Builder
    *
    * @param  Source $source
    * @param  string  $url
-   * @return CspBuilder for chainning
+   * @return Builder for chainning
    */
-  public function addCspPolicyUrl(Source $source, string $url): CspBuilder
+  public function addCspPolicyUrl(Source $source, string $url): Builder
   {
     $this->csp_options[ $source-> value ][] = $url;
     return $this;
@@ -70,9 +70,9 @@ class Builder
    * Add a nonce policy
    *
    * @param  Source $source
-   * @return CspBuilder for chaining
+   * @return Builder for chaining
    */
-  public function addCspPolicyNonce(Source $source) : CspBuilder
+  public function addCspPolicyNonce(Source $source) : Builder
   {
     $this->csp_options[ $source-> value ][] = "'nonce-$this->nonce'";
     return $this;
@@ -103,9 +103,9 @@ class Builder
    * setCspHeader
    * Side effect set the header in the current request
    *
-   * @return CspBuilder
+   * @return Builder
    */
-  public function setCspHeader(): CspBuilder
+  public function setCspHeader(): Builder
   {
     header('Content-Security-Policy: ' . $this->getCspHeader());
 
