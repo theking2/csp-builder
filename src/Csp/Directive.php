@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace CSP;
+namespace Csp;
 
 /**
- * CspDirective
+ * Directive
  * CSP directives
  */
-enum CspDirective: String {
+enum Directive: String {
   case Self = "'self'";
   case UnsafeInline = "'unsafe-inline'";
   case UnsafeEval = "'unsafe-eval'";

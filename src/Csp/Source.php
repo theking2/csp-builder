@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
-namespace CSP;
+namespace Csp;
 
 /**
  * CspSource
  * CSP sources
  */
-enum CspSource: String {
+enum Source: String {
   case Default = "default-src";
   case Image = "img-src";
   case Font = "font-src";

@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
-namespace CSP;
-use CSP\CspDirective, CSP\CspSource;
+namespace Csp;
 /**
  * CspBuilder
  * Build a Content Security Policy (CSP) header
@@ -10,7 +9,7 @@ use CSP\CspDirective, CSP\CspSource;
  *  ->addCspPolicy('script-src', CspBuilder::SELF);
  *  ->addCspPolicyNonce('script-src');
  */
-class CspBuilder
+class Builder
 {  
   private string $nonce;
   private array $csp_options = [];
@@ -23,8 +22,8 @@ class CspBuilder
       error_log("weak random for nonce");
     }
     if( $defaultSelf )
-      foreach( CspSource::cases() as $source )
-        $this->csp_options[ $source->value ][] = CspDirective::Self-> value;
+      foreach( Source::cases() as $source )
+        $this->csp_options[ $source->value ][] = Directive::Self-> value;
     else
   	  $this->csp_options = [];
   }  
@@ -32,11 +31,11 @@ class CspBuilder
    * Add a complete source list to the CSP
    * @deprecated use addCspPolicy
    *
-   * @param  CspSource $source
+   * @param  Source $source
    * @param  array $directivess Array of string directives
    * @return CspBuilder for chaining
    */
-  public function addCspPolicies(CspSource $source, array $directives): CspBuilder
+  public function addCspPolicies(Source $source, array $directives): CspBuilder
   {
     $this->csp_options[ $source-> value ] = $directives;
     return $this;
@@ -44,11 +43,11 @@ class CspBuilder
   /**
    * Add a single source to the CSP
    *
-   * @param  CspSource $source
-   * @param  CspDirective $directive
+   * @param  Source $source
+   * @param  Directive $directive
    * @return CspBuilder for chainning
    */
-  public function addCspPolicy(CspSource $source, CspDirective $directive): CspBuilder
+  public function addCspPolicy(Source $source, Directive $directive): CspBuilder
   {
     $this->csp_options[ $source-> value ][] = $directive-> value;
     return $this;
@@ -56,11 +55,11 @@ class CspBuilder
     /**
    * Add a single url to the CSP
    *
-   * @param  CspSource $source
+   * @param  Source $source
    * @param  string  $url
    * @return CspBuilder for chainning
    */
-  public function addCspPolicyUrl(CspSource $source, string $url): CspBuilder
+  public function addCspPolicyUrl(Source $source, string $url): CspBuilder
   {
     $this->csp_options[ $source-> value ][] = $url;
     return $this;
@@ -68,10 +67,10 @@ class CspBuilder
   /**
    * Add a nonce policy
    *
-   * @param  CspSource $source
+   * @param  Source $source
    * @return CspBuilder for chaining
    */
-  public function addCspPolicyNonce(CspSource $source) : CspBuilder
+  public function addCspPolicyNonce(Source $source) : CspBuilder
   {
     $this->csp_options[ $source-> value ][] = "'nonce-$this->nonce'";
     return $this;
