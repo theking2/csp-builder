@@ -4,7 +4,7 @@ Generate a CSP header
 ## Installation
 This project using composer.
 ```
-$ composer require theking2/csp-builder
+$ composer require kingsoft/csp-builder
 ```
 
 ## Usage
