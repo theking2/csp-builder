@@ -13,12 +13,11 @@ $ composer require kingsoft/csp-builder
 <?php
 use CSP\CspBuilder;
 
-$csp = new CspBuilder();
-$csp->addCspPolicies('default-src', [CspBuilder::SELF]);
-->addCspPolicy('script-src', CspBuilder::SELF)
-->addCspPolicy('script-src', CspBuilder::NONCE)
-->addCspPolicyNonce('script-src')
-->setCspHeader();
+$csp = (new CspBuilder())
+  ->addCspPolicy('script-src', CspBuilder::SELF)
+  ->addCspPolicy('script-src', CspBuilder::NONCE)
+  ->addCspPolicyNonce('script-src')
+  ->setCspHeader();
 
 define('NONCE', $csp-> getNonce());
 
