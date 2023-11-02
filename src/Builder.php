@@ -6,8 +6,7 @@ namespace Kingsoft\Csp;
  * Builder
  * Build a Content Security Policy (CSP) header
  * Example:
- * $Csp = new Builder();
- * $Csp->addCspPolicies('default-src', [Builder::SELF]);
+ * $Csp = (new Builder())
  *  ->addCspPolicy('script-src', Builder::SELF);
  *  ->addCspPolicyNonce('script-src');
  */
