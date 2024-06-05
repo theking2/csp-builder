@@ -1,14 +1,17 @@
 # CSPBuilder
+
 Generate a CSP header 
 
 ## Installation
+
 This project using composer.
-```
-$ composer require kingsoft/csp-builder
+
+```sh
+composer require kingsoft/csp-builder
 ```
 
 ## Usage
- * Example:
+
 ```php
 <?php
 use CSP\CspBuilder;
@@ -21,5 +24,6 @@ $csp = (new CspBuilder())
 
 define('NONCE', $csp-> getNonce());
 
-
+<script nonce="<?= NONCE ?>">
+</script>
 ```

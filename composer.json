@@ -1,6 +1,6 @@
 {
     "name": "kingsoft/csp-builder",
-    "description": "Conten Security Policy builder for PHP",
+    "description": "Content Security Policy builder for PHP",
     "type": "library",
     "license": "MIT",
     "autoload": {
