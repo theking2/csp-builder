@@ -18,7 +18,7 @@ class Builder
   public function __construct(?bool $defaultSelf=false)
   {
     $strong = false;
-    $this->nonce = base64_encode(openssl_random_pseudo_bytes( 46, $strong ));
+    $this->nonce = base64_encode( random_bytes( 16 ) );
     if( !$strong ) {
       error_log("weak random for nonce");
     }
