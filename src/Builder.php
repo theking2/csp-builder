@@ -17,11 +17,8 @@ class Builder
   
   public function __construct(?bool $defaultSelf=false)
   {
-    $strong = false;
     $this->nonce = base64_encode( random_bytes( 16 ) );
-    if( !$strong ) {
-      error_log("weak random for nonce");
-    }
+
     if( $defaultSelf )
       foreach( Source::cases() as $source )
         $this->csp_options[ $source->value ][] = Directive::Self-> value;
