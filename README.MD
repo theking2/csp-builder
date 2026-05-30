@@ -17,6 +17,8 @@ composer require kingsoft/csp-builder
 
 use Kingsoft\Csp\{Builder, Directive, Source};
 
+// API order: Source is the CSP directive name (e.g. script-src),
+// Directive is the value (e.g. 'self').
 $builder = (new Builder())
   ->addCspPolicy(Source::Script, Directive::Self)
   ->addCspPolicyNonce(Source::Script)
