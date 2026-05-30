@@ -1,10 +1,10 @@
-# CSPBuilder
+# CSP Builder
 
-Generate a CSP header 
+Build Content-Security-Policy (CSP) headers in PHP.
 
 ## Installation
 
-This project using composer.
+Install with Composer:
 
 ```sh
 composer require kingsoft/csp-builder
@@ -14,16 +14,30 @@ composer require kingsoft/csp-builder
 
 ```php
 <?php
-use CSP\CspBuilder;
 
-$csp = (new CspBuilder())
-  ->addCspPolicy('script-src', CspBuilder::SELF)
-  ->addCspPolicy('script-src', CspBuilder::NONCE)
-  ->addCspPolicyNonce('script-src')
-  ->setCspHeader();
+use Kingsoft\Csp\{Builder, Directive, Source};
 
-define('NONCE', $csp-> getNonce());
+$builder = (new Builder())
+  ->addCspPolicy(Source::Script, Directive::Self)
+  ->addCspPolicyNonce(Source::Script)
+  ->addCspPolicyUrl(Source::Script, 'https://cdn.example.com');
 
-<script nonce="<?= NONCE ?>">
-</script>
+$builder->setCspHeader();
+$nonce = $builder->getNonce();
+```
+
+```html
+<script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
+```
+
+You can also build the header string without sending it:
+
+```php
+$header = $builder->getCspHeader();
+```
+
+To initialize all supported sources with `'self'` by default:
+
+```php
+$builder = new Builder(true);
 ```

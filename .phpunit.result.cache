@@ -1,1 +1,0 @@
-{"version":1,"defects":{"BuilderTest::testConstructorGeneratesNonce":3},"times":{"BuilderTest::testConstructorGeneratesNonce":0.001,"BuilderTest::testAddCspPolicy":0,"BuilderTest::testAddCspPolicyUrl":0,"BuilderTest::testAddCspPolicyNonce":0}}
