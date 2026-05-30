@@ -46,3 +46,32 @@ To initialize all supported sources with `'self'` by default:
 ```php
 $builder = new Builder(true);
 ```
+
+## Enums
+
+`Source` (directive keys):
+
+- `Source::Default` (`default-src`)
+- `Source::Image` (`img-src`)
+- `Source::Font` (`font-src`)
+- `Source::Script` (`script-src`)
+- `Source::Style` (`style-src`)
+- `Source::Connect` (`connect-src`)
+- `Source::Object` (`object-src`)
+- `Source::Frame` (`frame-src`)
+- `Source::Base` (`base-uri`)
+- `Source::Form` (`form-action`)
+- `Source::Manifest` (`manifest-src`)
+
+`Directive` (directive values):
+
+> Note: quoted CSP keywords are already formatted in the enum values
+> (for example `Directive::Self` becomes `'self'` in the header).
+
+- `Directive::Self` (`'self'`)
+- `Directive::UnsafeInline` (`'unsafe-inline'`)
+- `Directive::UnsafeEval` (`'unsafe-eval'`)
+- `Directive::Data` (`data:`)
+- `Directive::Blob` (`blob:`)
+- `Directive::Media` (`media:`)
+- `Directive::Frame` (`frame:`)
