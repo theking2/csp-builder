@@ -24,10 +24,13 @@ $builder = (new Builder())
 
 $builder->setCspHeader();
 $nonce = $builder->getNonce();
+
+// addCspPolicyNonce() adds the nonce token to script-src,
+// getNonce() returns the same token for use in your HTML tags.
 ```
 
 ```html
-<script nonce="<?= htmlspecialchars($nonce, ENT_QUOTES, 'UTF-8') ?>"></script>
+<script nonce="<?= $nonce ?>"></script>
 ```
 
 You can also build the header string without sending it:
